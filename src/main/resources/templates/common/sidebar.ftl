@@ -17,11 +17,5 @@
                 <i class="icon-circle-check menu-icon"></i><span class="menu-title">점검원리스트</span>
             </a>
         </li>
-        <li class="nav-item">
-            <a class="nav-link" href="/report">
-                <i class="icon-file menu-icon"></i><span class="menu-title">종합보고서 보기</span>
-            </a>
-        </li>
-
     </ul>
 </nav>
