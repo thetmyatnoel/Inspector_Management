@@ -126,11 +126,9 @@
         </div>
 
     </div>
-
-
-
 <!-- Common JavaScript Files -->
 <#include "/common/js.ftl">
 <script src="/page/index.js"></script>
+
 </body>
 </html>

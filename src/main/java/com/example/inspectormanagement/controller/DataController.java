@@ -3,6 +3,7 @@ package com.example.inspectormanagement.controller;
 import com.example.inspectormanagement.entity.LoginInspector;
 import com.example.inspectormanagement.entity.WaitingApart;
 import com.example.inspectormanagement.repository.LoginInspectorRepository;
+import com.example.inspectormanagement.repository.UserRepository;
 import com.example.inspectormanagement.repository.WaitingApartRepository;
 import com.example.inspectormanagement.service.LoginInspectorService;
 import com.example.inspectormanagement.service.ReportService;
@@ -15,6 +16,7 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -35,6 +37,11 @@ public class DataController {
     private LoginInspectorRepository loginInspectorRepository;
     @Autowired
     private ReportService reportService;
+    @Autowired
+    private UserRepository userRepository;
+    @Autowired
+    private PasswordEncoder passwordEncoder;
+
     @PostMapping("/waitingApart")
     public ResponseEntity<WaitingApart> saveWaitingApart(@RequestBody WaitingApart waitingApart) {
         return ResponseEntity.ok(waitingApartService.saveWaitingApart(waitingApart));
@@ -86,5 +93,7 @@ public class DataController {
                 .header(HttpHeaders.CONTENT_DISPOSITION, "inline")
                 .body(new ByteArrayResource(reportContent));
     }
+
+
 
 }

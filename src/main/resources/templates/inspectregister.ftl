@@ -26,7 +26,6 @@
         font-size: 18px;
     }
 
-
 </style>
 <body>
 <div class="container-scroller">
@@ -76,8 +75,13 @@
                     <div class="col-md-10"><input type="text" name="apartmentName" class="form-control form-control-lg" placeholder="Enter apartment name"></div>
                 </div>
                 <div class="row mb-3">
-                    <div class="col-md-2 h5 mt-3">주소</div>
-                    <div class="col-md-10"><textarea name="address" class="form-control form-control-lg" placeholder="Enter address"></textarea></div>
+                    <div class="col-md-2 h5 mt-3">도로명</div>
+                    <div class="col-md-10">
+                        <input type="text" id="address" class="form-control form-control-lg" placeholder="Search address" onclick="execDaumPostcode()" readonly></div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-md-2 h5 mt-3">상세주소</div>
+                    <div class="col-md-10"><textarea id="de_address" class="form-control form-control-lg" placeholder="Enter detail address"></textarea></div>
                 </div>
                 <div class="row mb-3">
                     <div class="col-md-2 h5 mt-3">평수</div>
@@ -111,5 +115,29 @@
 <!-- Common JavaScript Files -->
 <#include "/common/js.ftl">
 <script src="/page/index.js"></script>
+<script>
+    function execDaumPostcode() {
+        new daum.Postcode({
+            oncomplete: function(data) {
+                // Populate the address field with the full road address
+                var fullAddr = data.roadAddress;
+
+                // If the user selected a place with a sub-address, include it
+                if(data.bname !== '' && /[동|로|가]$/g.test(data.bname)){
+                    fullAddr += ' ' + data.bname;
+                }
+                // If the user selected an apartment, include the apartment name
+                if(data.buildingName !== '' && data.apartment === 'Y'){
+                    fullAddr += ' ' + data.buildingName;
+                }
+
+                // Update the address input field
+                document.getElementById('address').value = fullAddr;
+
+                document.getElementById('de_address').focus();
+            }
+        }).open();
+    }
+</script>
 </body>
 </html>

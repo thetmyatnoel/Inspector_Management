@@ -4,6 +4,7 @@ import com.example.inspectormanagement.entity.LoginInspector;
 import com.example.inspectormanagement.repository.LoginInspectorRepository;
 import com.example.inspectormanagement.repository.WaitingApartRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -17,8 +18,12 @@ public class LoginInspectorService {
     private WaitingApartRepository waitingApartRepository;
     @Autowired
     private LoginInspectorRepository loginInspectorRepository;
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     public LoginInspector saveLoginInspector(LoginInspector loginInspector){
+        String encodedPassword = passwordEncoder.encode(loginInspector.getPassword());
+        loginInspector.setPassword(encodedPassword);
         return loginInspectorRepository.save(loginInspector);
     }
     public List<Map<String, Object>> getInspectorWorkCounts() {

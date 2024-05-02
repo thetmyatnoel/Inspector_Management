@@ -2,7 +2,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Inspector Management</title>
+    <title>InspectorManagement</title>
     <!-- plugins:css -->
 
     <link rel="stylesheet" href="vendors/feather/feather.css">
@@ -19,7 +19,9 @@
     <link rel="stylesheet" href="css/vertical-layout-light/style.css">
     <link href="css/bootstrap.min.css" rel="stylesheet" />
     <!-- endinject -->
-    <link rel="shortcut icon" href="images/favicon.png" />
+    <link rel="shortcut icon" href="images/favicon2.png"/>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.8.1/font/bootstrap-icons.min.css" rel="stylesheet">
+
 
 
 </head>

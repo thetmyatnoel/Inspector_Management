@@ -7,13 +7,14 @@ document.getElementById('sidebarToggle').addEventListener('click', function() {
         panel.classList.toggle('shrunk');
     });
 });
+
 $(document).ready(function() {
     fetchInspectTableData();
     $('#formSubmit').click(function() {
 
         var formData = {
             apartName: $('input[name="apartmentName"]').val(),
-            address: $('textarea[name="address"]').val(),
+            address: $('#address').val() + ' ' + $('#de_address').val(),
             customer_name: $('input[name="name"]').val(),
             inspection_date: $('input[name="inspectionDate"]').val(),
             area: $('input[name="area"]').val(),
