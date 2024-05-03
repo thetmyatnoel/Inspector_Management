@@ -31,16 +31,22 @@ public class PageController {
     }
 
     @GetMapping("/inspector")
-    public String inspector() {
+    public String inspector(Model model, @AuthenticationPrincipal User user) {
+        String username = user.getName();
+        model.addAttribute("username", username);
         return "inspector";
     }
     @GetMapping("/inspectregister")
-    public String inspectregister() {
+    public String inspectregister(Model model, @AuthenticationPrincipal User user) {
+        String username = user.getName();
+        model.addAttribute("username", username);
         return "inspectregister";
     }
 
     @GetMapping("/inspectorregister")
-    public String inspectorregister() {
+    public String inspectorregister(Model model, @AuthenticationPrincipal User user) {
+        String username = user.getName();
+        model.addAttribute("username", username);
         return "inspectorregister";
     }
     @GetMapping("/login")
@@ -60,6 +66,10 @@ public class PageController {
     @PostMapping("/registers")
     public String registerUser(@ModelAttribute User newUser, Model model) {
         // Logic to handle registration
+        if (userRepository.findByName(newUser.getName()).isPresent()) {
+            model.addAttribute("errorMessage", "Name already in use");
+            return "register"; // redirect back to the registration page or an error page
+        }
         if (userRepository.findByEmail(newUser.getEmail()) != null) {
             model.addAttribute("errorMessage", "Email already in use");
             return "register"; // redirect back to the registration page or an error page

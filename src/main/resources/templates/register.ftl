@@ -218,6 +218,8 @@
         <a href="login" id="signin">로그인</a>
       </li>
     </ul>
+
+
     <form action="/registers" method="post">
 
       <div>
@@ -271,6 +273,9 @@
 <#include "/common/js.ftl">
 <script>
   document.addEventListener('DOMContentLoaded', function() {
+    <#if errorMessage??>
+    alert("${errorMessage}");
+    </#if>
     const form = document.querySelector('form');
     form.addEventListener('submit', function(event) {
       const name = document.getElementById('name').value.trim();
