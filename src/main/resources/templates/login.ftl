@@ -231,7 +231,7 @@
     </form>
     <!-- separator -->
     <div>
-      <p>비밀번호를 잊으셨나요? <a href="reset_password.html">여기를 클릭하세요.</a></p>
+      <p>비밀번호를 잊으셨나요? <a href="/reset-password">여기를 클릭하세요.</a></p>
     </div>
 
     <footer>

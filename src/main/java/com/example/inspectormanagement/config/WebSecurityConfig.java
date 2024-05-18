@@ -40,6 +40,10 @@ public class WebSecurityConfig {
                                 .requestMatchers("/register").permitAll()
                                 .requestMatchers("/registers").permitAll()
                                 .requestMatchers("/success-page").permitAll()
+                                .requestMatchers("/reset-password").permitAll()
+                                .requestMatchers("/reset-passwords").permitAll()
+                                .requestMatchers("/updatePW","/updatePW**").permitAll()
+                                .requestMatchers("/update-password").permitAll()
                                 .anyRequest().authenticated())
                 .formLogin(formLogin ->
                         formLogin

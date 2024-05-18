@@ -263,11 +263,6 @@
       </p>
 
     </footer>
-    <div class="overlay" id="overlay" onclick="closeModal()">
-      <div class="modal" id="modal">
-        <p>회원 가입이 성공적으로 완료되었습니다. <a href="/login">로그인 페이지로 이동</a></p>
-      </div>
-    </div>
 
   </div>
 <#include "/common/js.ftl">
